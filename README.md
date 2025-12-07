@@ -64,3 +64,12 @@ A production-ready, single-page React website designed for a professional makeup
 
 - This project uses `localStorage` for data persistence. For a real backend, replace `src/context/DataContext.tsx` logic with API calls.
 - Images are currently sourced from Unsplash. Replace with real assets in the Admin panel or initial data.
+
+## Deployment to Vercel
+
+1. **Add Project**: Import the repository into Vercel.
+2. **Configure Build**: In the "Build & Development Settings" section:
+    - **Install Command**: Override and set to `npm install --legacy-peer-deps` (Required due to React 19 dependencies).
+3. **Deploy**: Click Deploy.
+
+*Note: A `vercel.json` file has been included to handle client-side routing.*
