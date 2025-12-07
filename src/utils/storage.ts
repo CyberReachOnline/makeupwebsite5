@@ -1,4 +1,4 @@
-const STORAGE_PREFIX = 'makeup_artist_app_';
+const STORAGE_PREFIX = 'makeup_artist_app_v2_';
 
 export const storage = {
     get: <T>(key: string, defaultValue: T): T => {

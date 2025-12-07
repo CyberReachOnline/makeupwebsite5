@@ -5,13 +5,26 @@ const Hero: React.FC = () => {
     return (
         <div className="relative min-h-screen flex items-center justify-center pt-16">
             {/* Background Image */}
-            <div className="absolute inset-0 z-0">
-                <img
-                    src="https://images.unsplash.com/photo-1610173827002-6b4e9dc7f6de?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="Indian Bridal Makeup"
-                    className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent dark:from-gray-900/95 dark:via-gray-900/80 dark:to-gray-900/40"></div>
+            {/* Background Image Slideshow */}
+            <div className="absolute inset-0 z-0 overflow-hidden">
+                {[
+                    "https://images.unsplash.com/photo-1610173827002-6b4e9dc7f6de?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    "https://images.unsplash.com/photo-1595959183082-7bce70848ddb?q=80&w=2071&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=2069&auto=format&fit=crop"
+                ].map((img, index) => (
+                    <div
+                        key={index}
+                        className="absolute inset-0 w-full h-full animate-hero-slide"
+                        style={{
+                            backgroundImage: `url(${img})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            animationDelay: `${index * 5}s`,
+                            opacity: 0
+                        }}
+                    ></div>
+                ))}
+                <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent dark:from-gray-900/95 dark:via-gray-900/80 dark:to-gray-900/40 z-10"></div>
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid md:grid-cols-2 gap-12 items-center">

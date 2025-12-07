@@ -1,15 +1,17 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { storage } from '../utils/storage';
-import { INITIAL_SERVICES, INITIAL_PORTFOLIO, INITIAL_GALLERY } from '../data';
-import type { Service, PortfolioItem, GalleryItem } from '../data';
+import { INITIAL_SERVICES, INITIAL_PORTFOLIO, INITIAL_GALLERY, INITIAL_COURSES } from '../data';
+import type { Service, PortfolioItem, GalleryItem, Course } from '../data';
 
 interface DataContextType {
     services: Service[];
     portfolio: PortfolioItem[];
     gallery: GalleryItem[];
+    courses: Course[];
     updateServices: (services: Service[]) => void;
     updatePortfolio: (portfolio: PortfolioItem[]) => void;
     updateGallery: (gallery: GalleryItem[]) => void;
+    updateCourses: (courses: Course[]) => void;
     resetData: () => void;
 }
 
@@ -19,6 +21,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [services, setServices] = useState<Service[]>(INITIAL_SERVICES);
     const [portfolio, setPortfolio] = useState<PortfolioItem[]>(INITIAL_PORTFOLIO);
     const [gallery, setGallery] = useState<GalleryItem[]>(INITIAL_GALLERY);
+    const [courses, setCourses] = useState<Course[]>(INITIAL_COURSES);
 
     useEffect(() => {
         const storedServices = storage.get<Service[]>('services', []);
@@ -29,6 +32,9 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
         const storedGallery = storage.get<GalleryItem[]>('gallery', []);
         if (storedGallery.length > 0) setGallery(storedGallery);
+
+        const storedCourses = storage.get<Course[]>('courses', []);
+        if (storedCourses.length > 0) setCourses(storedCourses);
     }, []);
 
     const updateServices = (newServices: Service[]) => {
@@ -46,19 +52,26 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         storage.set('gallery', newGallery);
     };
 
+    const updateCourses = (newCourses: Course[]) => {
+        setCourses(newCourses);
+        storage.set('courses', newCourses);
+    };
+
     const resetData = () => {
         setServices(INITIAL_SERVICES);
         setPortfolio(INITIAL_PORTFOLIO);
         setGallery(INITIAL_GALLERY);
+        setCourses(INITIAL_COURSES);
         storage.remove('services');
         storage.remove('portfolio');
         storage.remove('gallery');
+        storage.remove('courses');
     };
 
     return (
         <DataContext.Provider value={{
-            services, portfolio, gallery,
-            updateServices, updatePortfolio, updateGallery, resetData
+            services, portfolio, gallery, courses,
+            updateServices, updatePortfolio, updateGallery, updateCourses, resetData
         }}>
             {children}
         </DataContext.Provider>
