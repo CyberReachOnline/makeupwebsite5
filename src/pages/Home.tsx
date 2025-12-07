@@ -20,6 +20,25 @@ const Home: React.FC = () => {
 
             <Hero />
 
+            <section className="py-20 bg-gray-50 dark:bg-gray-800/50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white mb-4">Selected Works</h2>
+                        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                            A glimpse into our portfolio of stunning transformations.
+                        </p>
+                    </div>
+
+                    <PortfolioGrid />
+
+                    <div className="text-center mt-12">
+                        <Link to="/portfolio" className="inline-block bg-primary-600 text-white px-8 py-3 rounded-full font-bold hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/30">
+                            View Full Portfolio
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
             <section className="py-20 bg-white dark:bg-gray-900">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
@@ -60,24 +79,7 @@ const Home: React.FC = () => {
                 </div>
             </section>
 
-            <section className="py-20 bg-gray-50 dark:bg-gray-800/50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white mb-4">Selected Works</h2>
-                        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                            A glimpse into our portfolio of stunning transformations.
-                        </p>
-                    </div>
 
-                    <PortfolioGrid />
-
-                    <div className="text-center mt-12">
-                        <Link to="/portfolio" className="inline-block bg-primary-600 text-white px-8 py-3 rounded-full font-bold hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/30">
-                            View Full Portfolio
-                        </Link>
-                    </div>
-                </div>
-            </section>
         </>
     );
 };
