@@ -4,7 +4,11 @@ import type { PortfolioItem } from '../data';
 import Lightbox from './Lightbox';
 import { clsx } from 'clsx';
 
-const PortfolioGrid: React.FC = () => {
+interface PortfolioGridProps {
+    limit?: number;
+}
+
+const PortfolioGrid: React.FC<PortfolioGridProps> = ({ limit }) => {
     const { portfolio } = useData();
     const [filter, setFilter] = useState<string>('all');
     const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
@@ -14,6 +18,8 @@ const PortfolioGrid: React.FC = () => {
     const filteredItems = filter === 'all'
         ? portfolio
         : portfolio.filter(item => item.category === filter);
+
+    const displayedItems = limit ? filteredItems.slice(0, limit) : filteredItems;
 
     return (
         <div>
@@ -35,7 +41,7 @@ const PortfolioGrid: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredItems.map(item => (
+                {displayedItems.map(item => (
                     <div
                         key={item.id}
                         onClick={() => setSelectedItem(item)}

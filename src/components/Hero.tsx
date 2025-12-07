@@ -4,13 +4,13 @@ import BookingForm from './BookingForm';
 const Hero: React.FC = () => {
     return (
         <div className="relative min-h-screen flex items-center justify-center pt-16">
-            {/* Background Image */}
             {/* Background Image Slideshow */}
             <div className="absolute inset-0 z-0 overflow-hidden">
                 {[
-                    "https://images.unsplash.com/photo-1610173827002-6b4e9dc7f6de?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    "https://images.unsplash.com/photo-1595959183082-7bce70848ddb?q=80&w=2071&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=2069&auto=format&fit=crop"
+                    "/hero/hero-1.png",
+                    "/hero/hero-2.png",
+                    "/hero/hero-3.png",
+                    "/hero/hero-4.png"
                 ].map((img, index) => (
                     <div
                         key={index}
@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
                             backgroundImage: `url(${img})`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
-                            animationDelay: `${index * 5}s`,
+                            animationDelay: `${index * 6}s`,
                             opacity: 0
                         }}
                     ></div>

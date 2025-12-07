@@ -31,7 +31,7 @@
 
 @layer utilities {
   .animate-hero-slide {
-    animation: heroSlide 15s infinite;
+    animation: heroSlide 24s infinite ease-in-out;
   }
 }
 
@@ -41,21 +41,23 @@
     transform: scale(1);
   }
 
-  5% {
+  4% {
     opacity: 1;
+    transform: scale(1);
   }
 
-  33% {
+  25% {
     opacity: 1;
+    transform: scale(1.15);
   }
 
-  38% {
+  29% {
     opacity: 0;
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
 
   100% {
     opacity: 0;
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
 }

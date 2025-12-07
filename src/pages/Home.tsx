@@ -29,7 +29,7 @@ const Home: React.FC = () => {
                         </p>
                     </div>
 
-                    <PortfolioGrid />
+                    <PortfolioGrid limit={6} />
 
                     <div className="text-center mt-12">
                         <Link to="/portfolio" className="inline-block bg-primary-600 text-white px-8 py-3 rounded-full font-bold hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/30">

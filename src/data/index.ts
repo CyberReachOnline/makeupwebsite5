@@ -87,6 +87,30 @@ export const INITIAL_PORTFOLIO: PortfolioItem[] = [
         category: 'editorial',
         imageUrl: '/portfolio/hairstyle.png',
         title: 'Hairstyling Artistry'
+    },
+    {
+        id: '6',
+        category: 'bridal',
+        imageUrl: '/portfolio/bridal-blue-elegant-1.png',
+        title: 'Royal Blue Bridal'
+    },
+    {
+        id: '7',
+        category: 'bridal',
+        imageUrl: '/portfolio/bridal-blue-elegant-2.png',
+        title: 'Elegant Bridal Makeup'
+    },
+    {
+        id: '8',
+        category: 'party',
+        imageUrl: '/portfolio/elegant-blue-saree.png',
+        title: 'Contemporary Saree Look'
+    },
+    {
+        id: '9',
+        category: 'bridal',
+        imageUrl: '/portfolio/bridal-blue-glam.png',
+        title: 'Glamorous Bridal Eyes'
     }
 ];
 

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useData } from '../context/DataContext';
 import { storage } from '../utils/storage';
-import { FiTrash2, FiPlus } from 'react-icons/fi';
-import type { Service, PortfolioItem, GalleryItem } from '../data';
+import { FiTrash2, FiPlus, FiArrowUp, FiArrowDown } from 'react-icons/fi';
+import type { Service, PortfolioItem, GalleryItem, Course } from '../data';
 
 const AdminPage: React.FC = () => {
     const navigate = useNavigate();
-    const { services, portfolio, gallery, updateServices, updatePortfolio, updateGallery } = useData();
-    const [activeTab, setActiveTab] = useState<'services' | 'portfolio' | 'gallery'>('services');
+    const { services, portfolio, gallery, courses, updateServices, updatePortfolio, updateGallery, updateCourses } = useData();
+    const [activeTab, setActiveTab] = useState<'services' | 'portfolio' | 'gallery' | 'courses'>('services');
 
     useEffect(() => {
         const isAuthenticated = storage.get('isAdminAuthenticated', false);
@@ -63,6 +63,20 @@ const AdminPage: React.FC = () => {
         updatePortfolio(portfolio.filter(p => p.id !== id));
     };
 
+    const movePortfolioUp = (index: number) => {
+        if (index === 0) return;
+        const newPortfolio = [...portfolio];
+        [newPortfolio[index - 1], newPortfolio[index]] = [newPortfolio[index], newPortfolio[index - 1]];
+        updatePortfolio(newPortfolio);
+    };
+
+    const movePortfolioDown = (index: number) => {
+        if (index === portfolio.length - 1) return;
+        const newPortfolio = [...portfolio];
+        [newPortfolio[index], newPortfolio[index + 1]] = [newPortfolio[index + 1], newPortfolio[index]];
+        updatePortfolio(newPortfolio);
+    };
+
     // Gallery Form State
     const [newGallery, setNewGallery] = useState<Partial<GalleryItem>>({ imageUrl: '', caption: '' });
 
@@ -81,6 +95,42 @@ const AdminPage: React.FC = () => {
         updateGallery(gallery.filter(g => g.id !== id));
     };
 
+    // Courses Form State
+    const [newCourse, setNewCourse] = useState<Partial<Course>>({ title: '', price: '', duration: '', description: '', curriculum: [], imageUrl: '' });
+    const [curriculumInput, setCurriculumInput] = useState('');
+
+    const addCourse = () => {
+        if (!newCourse.title || !newCourse.price) return;
+        const course: Course = {
+            id: Date.now().toString(),
+            title: newCourse.title!,
+            price: newCourse.price!,
+            duration: newCourse.duration || '',
+            description: newCourse.description || '',
+            curriculum: newCourse.curriculum || [],
+            imageUrl: newCourse.imageUrl || ''
+        };
+        updateCourses([...courses, course]);
+        setNewCourse({ title: '', price: '', duration: '', description: '', curriculum: [], imageUrl: '' });
+        setCurriculumInput('');
+    };
+
+    const deleteCourse = (id: string) => {
+        updateCourses(courses.filter(c => c.id !== id));
+    };
+
+    const addCurriculumItem = () => {
+        if (!curriculumInput.trim()) return;
+        setNewCourse({ ...newCourse, curriculum: [...(newCourse.curriculum || []), curriculumInput] });
+        setCurriculumInput('');
+    };
+
+    const removeCurriculumItem = (index: number) => {
+        const updated = [...(newCourse.curriculum || [])];
+        updated.splice(index, 1);
+        setNewCourse({ ...newCourse, curriculum: updated });
+    };
+
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8">
             <div className="max-w-6xl mx-auto">
@@ -90,7 +140,7 @@ const AdminPage: React.FC = () => {
                 </div>
 
                 <div className="flex space-x-4 mb-8 border-b border-gray-200 dark:border-gray-700 pb-4">
-                    {(['services', 'portfolio', 'gallery'] as const).map(tab => (
+                    {(['services', 'portfolio', 'gallery', 'courses'] as const).map(tab => (
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}
@@ -148,12 +198,36 @@ const AdminPage: React.FC = () => {
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                            {portfolio.map(item => (
+                            {portfolio.map((item, index) => (
                                 <div key={item.id} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow relative group">
                                     <img src={item.imageUrl} alt={item.title} className="w-full h-40 object-cover rounded mb-2" />
                                     <h4 className="font-bold text-sm text-gray-900 dark:text-white">{item.title}</h4>
                                     <p className="text-xs text-gray-500 capitalize">{item.category}</p>
-                                    <button onClick={() => deletePortfolio(item.id)} className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><FiTrash2 size={16} /></button>
+                                    <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button
+                                            onClick={() => movePortfolioUp(index)}
+                                            disabled={index === 0}
+                                            className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                                            title="Move up"
+                                        >
+                                            <FiArrowUp size={16} />
+                                        </button>
+                                        <button
+                                            onClick={() => movePortfolioDown(index)}
+                                            disabled={index === portfolio.length - 1}
+                                            className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                                            title="Move down"
+                                        >
+                                            <FiArrowDown size={16} />
+                                        </button>
+                                        <button
+                                            onClick={() => deletePortfolio(item.id)}
+                                            className="bg-red-500 text-white p-2 rounded-full hover:bg-red-600"
+                                            title="Delete"
+                                        >
+                                            <FiTrash2 size={16} />
+                                        </button>
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -178,6 +252,71 @@ const AdminPage: React.FC = () => {
                                     <img src={item.imageUrl} alt={item.caption} className="w-full h-40 object-cover rounded mb-2" />
                                     {item.caption && <p className="text-xs text-gray-500">{item.caption}</p>}
                                     <button onClick={() => deleteGallery(item.id)} className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><FiTrash2 size={16} /></button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {/* Courses Management */}
+                {activeTab === 'courses' && (
+                    <div className="space-y-8">
+                        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+                            <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Add New Course</h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <input placeholder="Title" className="p-2 border rounded dark:bg-gray-700 dark:text-white" value={newCourse.title} onChange={e => setNewCourse({ ...newCourse, title: e.target.value })} />
+                                <input placeholder="Price (e.g., ₹50,000)" className="p-2 border rounded dark:bg-gray-700 dark:text-white" value={newCourse.price} onChange={e => setNewCourse({ ...newCourse, price: e.target.value })} />
+                                <input placeholder="Duration (e.g., 4 Weeks)" className="p-2 border rounded dark:bg-gray-700 dark:text-white" value={newCourse.duration} onChange={e => setNewCourse({ ...newCourse, duration: e.target.value })} />
+                                <input placeholder="Image URL" className="p-2 border rounded dark:bg-gray-700 dark:text-white" value={newCourse.imageUrl} onChange={e => setNewCourse({ ...newCourse, imageUrl: e.target.value })} />
+                            </div>
+                            <textarea placeholder="Description" className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white mb-4" rows={3} value={newCourse.description} onChange={e => setNewCourse({ ...newCourse, description: e.target.value })} />
+
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Curriculum Items</label>
+                                <div className="flex gap-2 mb-2">
+                                    <input
+                                        placeholder="Add curriculum item"
+                                        className="flex-1 p-2 border rounded dark:bg-gray-700 dark:text-white"
+                                        value={curriculumInput}
+                                        onChange={e => setCurriculumInput(e.target.value)}
+                                        onKeyPress={e => e.key === 'Enter' && addCurriculumItem()}
+                                    />
+                                    <button onClick={addCurriculumItem} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add</button>
+                                </div>
+                                <div className="space-y-1">
+                                    {newCourse.curriculum?.map((item, index) => (
+                                        <div key={index} className="flex items-center justify-between bg-gray-100 dark:bg-gray-700 p-2 rounded">
+                                            <span className="text-sm text-gray-900 dark:text-white">{item}</span>
+                                            <button onClick={() => removeCurriculumItem(index)} className="text-red-500 hover:text-red-700"><FiTrash2 size={16} /></button>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <button onClick={addCourse} className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 flex items-center"><FiPlus className="mr-2" /> Add Course</button>
+                        </div>
+
+                        <div className="grid gap-4">
+                            {courses.map(course => (
+                                <div key={course.id} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+                                    <div className="flex justify-between items-start">
+                                        <div className="flex-1">
+                                            <h4 className="font-bold text-lg text-gray-900 dark:text-white">{course.title}</h4>
+                                            <p className="text-sm text-gray-500 mb-2">{course.price} • {course.duration}</p>
+                                            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{course.description}</p>
+                                            {course.curriculum && course.curriculum.length > 0 && (
+                                                <div className="mt-2">
+                                                    <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">Curriculum:</p>
+                                                    <ul className="text-xs text-gray-600 dark:text-gray-400 list-disc list-inside">
+                                                        {course.curriculum.map((item, idx) => (
+                                                            <li key={idx}>{item}</li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <button onClick={() => deleteCourse(course.id)} className="text-red-500 hover:text-red-700 ml-4"><FiTrash2 size={20} /></button>
+                                    </div>
                                 </div>
                             ))}
                         </div>
