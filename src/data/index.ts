@@ -61,32 +61,32 @@ export const INITIAL_PORTFOLIO: PortfolioItem[] = [
     {
         id: '1',
         category: 'bridal',
-        imageUrl: 'https://images.unsplash.com/photo-1595959183082-7bce70848ddb?auto=format&fit=crop&q=80',
-        title: 'Traditional Red'
+        imageUrl: '/portfolio/bridal-blue-1.png',
+        title: 'Blue Bridal Elegance'
     },
     {
         id: '2',
-        category: 'party',
-        imageUrl: 'https://images.unsplash.com/photo-1583265627959-fb7c91d52684?auto=format&fit=crop&q=80',
-        title: 'Sangeet Glam'
+        category: 'bridal',
+        imageUrl: '/portfolio/bridal-blue-2.png',
+        title: 'Bridal Glam'
     },
     {
         id: '3',
-        category: 'editorial',
-        imageUrl: 'https://images.unsplash.com/photo-1616782298711-e4026bd6df45?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        title: 'Editorial Shoot'
+        category: 'bridal',
+        imageUrl: '/portfolio/traditional-saree.png',
+        title: 'Traditional Maharashtrian'
     },
     {
         id: '4',
-        category: 'bridal',
-        imageUrl: 'https://images.unsplash.com/photo-1546804784-896d0dca3805?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        title: 'Modern Bride'
+        category: 'party',
+        imageUrl: '/portfolio/party-glam.png',
+        title: 'Evening Party Look'
     },
     {
         id: '5',
-        category: 'sfx',
-        imageUrl: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80',
-        title: 'Creative Look'
+        category: 'editorial',
+        imageUrl: '/portfolio/hairstyle.png',
+        title: 'Hairstyling Artistry'
     }
 ];
 
