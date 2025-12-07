@@ -1,4 +1,4 @@
-export const DEFAULT_PHONE = '1234567890'; // Replace with actual number
+export const DEFAULT_PHONE = '919876543210'; // Indian Number format
 
 export const generateWhatsAppLink = (phone: string, message: string) => {
     const cleanPhone = phone.replace(/[^\d]/g, '');

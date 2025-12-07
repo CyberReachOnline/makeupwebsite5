@@ -45,13 +45,13 @@ const Footer: React.FC = () => {
                         <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact</h4>
                         <ul className="space-y-3">
                             <li className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                                <FiPhone className="mr-2 text-primary-500" /> +1 (555) 123-4567
+                                <FiPhone className="mr-2 text-primary-500" /> +91 98765 43210
                             </li>
                             <li className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                                <FiMail className="mr-2 text-primary-500" /> hello@luxeglow.com
+                                <FiMail className="mr-2 text-primary-500" /> hello@luxeglow.in
                             </li>
                             <li className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                                <FiMapPin className="mr-2 text-primary-500" /> Los Angeles, CA
+                                <FiMapPin className="mr-2 text-primary-500" /> Mumbai, Maharashtra
                             </li>
                         </ul>
                     </div>

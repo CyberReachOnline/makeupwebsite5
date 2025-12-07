@@ -24,26 +24,26 @@ export const INITIAL_SERVICES: Service[] = [
     {
         id: '1',
         title: 'Bridal Makeup',
-        price: '$300',
-        description: 'Complete bridal look including trial.',
+        price: '₹25,000',
+        description: 'Complete HD bridal look for your big day.',
         duration: '3 hours',
-        features: ['Consultation', 'Trial session', 'Premium lashes', 'Touch-up kit']
+        features: ['Consultation', 'Premium lashes', 'Draping assistance', 'Touch-up kit']
     },
     {
         id: '2',
-        title: 'Party Glam',
-        price: '$150',
-        description: 'Perfect for special occasions and events.',
-        duration: '1.5 hours',
-        features: ['Full face makeup', 'Lashes included', 'Long-lasting setting']
+        title: 'Sangeet / Reception',
+        price: '₹15,000',
+        description: 'Glamorous look for pre-wedding functions.',
+        duration: '2 hours',
+        features: ['HD makeup', 'Hairstyling included', 'Lashes included']
     },
     {
         id: '3',
-        title: 'Editorial / Photoshoot',
-        price: '$200',
-        description: 'High-definition makeup for photography.',
-        duration: '2 hours',
-        features: ['HD products', 'Creative direction', 'On-set touch-ups (extra)']
+        title: 'Party Makeup',
+        price: '₹8,000',
+        description: 'Elegant look for guests and parties.',
+        duration: '1.5 hours',
+        features: ['Long-lasting base', 'Eye makeup focus', 'Hair styling']
     }
 ];
 
@@ -51,37 +51,37 @@ export const INITIAL_PORTFOLIO: PortfolioItem[] = [
     {
         id: '1',
         category: 'bridal',
-        imageUrl: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80',
-        title: 'Classic Bridal'
+        imageUrl: 'https://images.unsplash.com/photo-1595959183082-7bce70848ddb?auto=format&fit=crop&q=80',
+        title: 'Traditional Red'
     },
     {
         id: '2',
         category: 'party',
-        imageUrl: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80',
-        title: 'Evening Glam'
+        imageUrl: 'https://images.unsplash.com/photo-1583265627959-fb7c91d52684?auto=format&fit=crop&q=80',
+        title: 'Sangeet Glam'
     },
     {
         id: '3',
         category: 'editorial',
-        imageUrl: 'https://images.unsplash.com/photo-1457972729786-0411a3b2b626?auto=format&fit=crop&q=80',
-        title: 'Fashion Editorial'
+        imageUrl: 'https://images.unsplash.com/photo-1616782298711-e4026bd6df45?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        title: 'Editorial Shoot'
     },
     {
         id: '4',
         category: 'bridal',
-        imageUrl: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80',
+        imageUrl: 'https://images.unsplash.com/photo-1546804784-896d0dca3805?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         title: 'Modern Bride'
     },
     {
         id: '5',
         category: 'sfx',
-        imageUrl: 'https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&q=80',
-        title: 'Creative SFX'
+        imageUrl: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80',
+        title: 'Creative Look'
     }
 ];
 
 export const INITIAL_GALLERY: GalleryItem[] = [
-    { id: '1', imageUrl: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=80', caption: 'Backstage' },
-    { id: '2', imageUrl: 'https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&q=80', caption: 'Product details' },
-    { id: '3', imageUrl: 'https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&q=80', caption: 'Studio vibes' },
+    { id: '1', imageUrl: 'https://images.unsplash.com/photo-1610996131496-e1e36ba59cb6?q=80&w=1939&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Jewelry Details' },
+    { id: '2', imageUrl: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=80', caption: 'Product Collection' },
+    { id: '3', imageUrl: 'https://images.unsplash.com/photo-1522337360705-8b13d5204369?auto=format&fit=crop&q=80', caption: 'Getting Ready' },
 ];

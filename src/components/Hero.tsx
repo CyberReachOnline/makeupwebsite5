@@ -7,8 +7,8 @@ const Hero: React.FC = () => {
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="https://images.unsplash.com/photo-1457972729786-0411a3b2b626?auto=format&fit=crop&q=80"
-                    alt="Makeup Artist Background"
+                    src="https://images.unsplash.com/photo-1610173827002-6b4e9dc7f6de?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Indian Bridal Makeup"
                     className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent dark:from-gray-900/95 dark:via-gray-900/80 dark:to-gray-900/40"></div>

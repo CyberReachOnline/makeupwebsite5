@@ -39,7 +39,7 @@ const ContactPage: React.FC = () => {
                                         <FiPhone className="mt-1 mr-4 text-primary-600 dark:text-primary-400 text-xl" />
                                         <div>
                                             <h4 className="font-bold text-gray-900 dark:text-white">Phone</h4>
-                                            <p className="text-gray-600 dark:text-gray-400">+1 (555) 123-4567</p>
+                                            <p className="text-gray-600 dark:text-gray-400">+91 98765 43210</p>
                                             <p className="text-sm text-gray-500">Available Mon-Fri, 9am - 6pm</p>
                                         </div>
                                     </div>
@@ -48,7 +48,7 @@ const ContactPage: React.FC = () => {
                                         <FiMail className="mt-1 mr-4 text-primary-600 dark:text-primary-400 text-xl" />
                                         <div>
                                             <h4 className="font-bold text-gray-900 dark:text-white">Email</h4>
-                                            <p className="text-gray-600 dark:text-gray-400">hello@luxeglow.com</p>
+                                            <p className="text-gray-600 dark:text-gray-400">hello@luxeglow.in</p>
                                         </div>
                                     </div>
 
@@ -56,7 +56,7 @@ const ContactPage: React.FC = () => {
                                         <FiMapPin className="mt-1 mr-4 text-primary-600 dark:text-primary-400 text-xl" />
                                         <div>
                                             <h4 className="font-bold text-gray-900 dark:text-white">Studio Location</h4>
-                                            <p className="text-gray-600 dark:text-gray-400">123 Beauty Lane, Beverly Hills, CA 90210</p>
+                                            <p className="text-gray-600 dark:text-gray-400">101 Glamour Heights, Bandra West, Mumbai, 400050</p>
                                         </div>
                                     </div>
 
